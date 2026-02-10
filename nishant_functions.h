@@ -1,0 +1,6 @@
+
+
+#ifndef NISHANT_FUNCTIONS_H_
+#define NISHANT_FUNCTIONS_H_
+
+#endif //NISHANT_FUNCTIONS_H_
