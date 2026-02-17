@@ -11,6 +11,7 @@ using std::endl;
 using std::cin;
 
 void askGameSettings(int &num_rounds, int &time_per_round) {
+    cout << "First, let's set up the game." << endl;
     num_rounds = 0;
     time_per_round = 0;
 
@@ -20,12 +21,13 @@ void askGameSettings(int &num_rounds, int &time_per_round) {
     }
 
     while (time_per_round <= 0) {
-        cout << "Enter the time each player gets per round: ";
+        cout << "Enter the time each player gets per round (secs): ";
         cin >> time_per_round;
     }
 }
 
 void askPlayerSettings(int &num_players, string player_names[], const int player_names_size) {
+    cout << "\nNext, let's determine the players." << endl;
     num_players = 0;
 
     while (num_players <= 0 || num_players > player_names_size) {
@@ -83,7 +85,7 @@ int evaluateExpression(int n1, int n2, int n3, char op1, char op2) {
     return result;
 }
 
-void generateEvaluation(int n1, int n2, int n3, char op1, char op2) {
+void explainEvaluation(int n1, int n2, int n3, char op1, char op2) {
     int result = evaluateExpression(n1, n2, n3, op1, op2);
 
     if (expressionIsInOrder(op1, op2)) {
@@ -113,4 +115,13 @@ void generateEvaluation(int n1, int n2, int n3, char op1, char op2) {
         // finally, 1 + 6 = 7
         cout << "Finally, " << n1 << " " << op1 << " " << rs << " = " << result << endl;
     }
+}
+
+void printExpression(int n1, int n2, int n3, char op1, char op2) {
+    cout << n1 << " " << op1 << " " << n2 << " " << op2 << " " << n3;
+}
+
+bool checkClock(int current_clock, int max_time, int &elapsed_time) {
+    elapsed_time = (clock() - current_clock) / CLOCKS_PER_SEC;
+    return elapsed_time < max_time;
 }
