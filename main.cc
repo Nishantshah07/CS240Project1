@@ -22,8 +22,10 @@ string player_names[64] = {};
 
 
 int main() {
-    askGameSettings(total_rounds, max_time);
-    askPlayerSettings(num_players, player_names, max_players);
+    // askGameSettings(total_rounds, max_time);
+    // askPlayerSettings(num_players, player_names, max_players);
+
+    generateEvaluation(90, 2, 4, '*', '%');
 
     return 0;
 }
