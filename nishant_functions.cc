@@ -16,6 +16,26 @@ void generateExpression(int &x, int &y, int &z, char &a, char &b) {
 	char operands[5] = {'+', '-', '*', '/', '%'};
 	a = operands[rand() % 5];
 	b = operands[rand() % 5];
+    if(a=='/'){
+        if(y==0)
+            y = 1;
+        if(y > x)
+            y = x;
+
+    while(y > 1 && x % y != 0){
+        y--;
+        }
+    }
+    if(b=='/'){
+        if(z==0)
+            z = 1;
+        if(z > y)
+            z = y;
+
+    while(z > 1 && y % z != 0){
+        z--;
+        }
+    }
 }
 
 #include "nishant_functions.h"
