@@ -1,6 +1,11 @@
-#import <iostream>
-#import "nishant_functions.h"
-#import "braden_functions.h"
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
+#include "nishant_functions.h"
+#include "braden_functions.h"
+
 
 using std::cout;
 using std::endl;
@@ -11,8 +16,8 @@ int total_rounds;
 
 // time settings
 int max_time;  // in seconds
-int current_clock;
-int total_round_time = 0;
+int current_time;
+int round_start_time;
 
 // player settings
 int num_players;
@@ -23,10 +28,11 @@ int scoreboard[max_players];
 // round vars
 int n1, n2, n3;
 char op1, op2;
-int playerAnswer;
-int actualAnswer;
-bool completedRoundOnTime = false;
-int elapsedTime;
+int player_answer;
+int actual_answer;
+bool completed_round_on_time = false;
+int elapsed_time_per_round;
+int elapsed_time_total_round;
 
 
 int main() {
@@ -38,18 +44,19 @@ int main() {
         scoreboard[i] = 0;
     }
 
-    cout << "Welcome to the ______ game!\n" << endl;
+    cout << "Welcome to the multiplayer math game!\n" << endl;
 
     askGameSettings(total_rounds, max_time);
     askPlayerSettings(num_players, player_names, max_players);
 
     for (int current_player = 0; current_player < num_players; current_player++) {
         cout << player_names[current_player] << ", you're up!" << endl;
+        round_start_time = time(0);
 
         for (int current_round = 0; current_round < total_rounds; current_round++) {
             // start round
             cout << "Round " << current_round + 1 << "/" << total_rounds << endl;
-            current_clock = clock();
+            current_time = time(0);
 
             // run round
             // generate expression and give to player
@@ -59,26 +66,28 @@ int main() {
             cout << ": ";
 
             // check answer
-            cin >> playerAnswer;
-            completedRoundOnTime = checkClock(current_clock, max_time, elapsedTime);
-            actualAnswer = evaluateExpression(n1, n2, n3, op1, op2);
-            if (playerAnswer == actualAnswer) {
+            cin >> player_answer;
+            completed_round_on_time = checkTime(current_time, max_time, elapsed_time_per_round);
+            actual_answer = evaluateExpression(n1, n2, n3, op1, op2);
+            if (player_answer == actual_answer) {
                 cout << "That is correct! ";
-                if (completedRoundOnTime) {
+                if (completed_round_on_time) {
                     cout << "+1 points." << endl;
                     scoreboard[current_player]++;
                 } else {
-                    cout << "But...you took " << max_time - elapsedTime << " too long. No points awarded." << endl;
+                    cout << "But...you took " << elapsed_time_per_round - max_time <<
+                            " seconds too long. No points awarded." << endl;
                 }
             } else {
                 cout << "Wrong answer! No points awarded. Here's how you should have solved it: " << endl;
                 explainEvaluation(n1, n2, n3, op1, op2);
             }
-
-            // end round
-            cout << player_names[current_player] << ", you currently have " << scoreboard[current_player] << " points."
-                    << endl;
         }
+
+        // end round
+        elapsed_time_total_round = time(0) - round_start_time;
+        cout << player_names[current_player] << ", it took you " << elapsed_time_total_round <<
+                " seconds and you currently have " << scoreboard[current_player] << " points." << endl;
     }
 
     // cout << "Game over! The current scores are:" << endl;

@@ -20,7 +20,7 @@ void explainEvaluation(int n1, int n2, int n3, char op1, char op2);
 
 void printExpression(int n1, int n2, int n3, char op1, char op2);
 
-bool checkClock(int current_clock, int max_time, int &elapsed_time);
+bool checkTime(int current_time, int max_time, int &elapsed_time);
 
 
 #endif //BRADEN_FUNCTIONS_H_

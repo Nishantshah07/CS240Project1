@@ -56,6 +56,8 @@ int perform_op(int n1, int n2, char op) {
             return n1 / n2;
         case '%':
             return n1 % n2;
+        case '^':
+            return static_cast<int>(pow(n1, n2));
         default:
             cout << "Invalid operator entered: " << op << endl;
             return -1;
@@ -63,8 +65,8 @@ int perform_op(int n1, int n2, char op) {
 }
 
 bool expressionIsInOrder(char op1, char op2) {
-    char ops[] = {'+', '-', '*', '/', '%'};
-    int precedence[] = {0, 0, 1, 1, 1};
+    char ops[] = {'+', '-', '*', '/', '%', '^'};
+    int precedence[] = {0, 0, 1, 1, 1, 2};
 
     int op1_idx = std::find(std::begin(ops), std::end(ops), op1) - ops;
     int op2_idx = std::find(std::begin(ops), std::end(ops), op2) - ops;
@@ -121,7 +123,7 @@ void printExpression(int n1, int n2, int n3, char op1, char op2) {
     cout << n1 << " " << op1 << " " << n2 << " " << op2 << " " << n3;
 }
 
-bool checkClock(int current_clock, int max_time, int &elapsed_time) {
-    elapsed_time = (clock() - current_clock) / CLOCKS_PER_SEC;
+bool checkTime(int current_time, int max_time, int &elapsed_time) {
+    elapsed_time = time(0) - current_time;
     return elapsed_time < max_time;
 }
