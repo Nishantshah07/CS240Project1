@@ -60,7 +60,7 @@ int perform_op(int n1, int n2, char op) {
     }
 }
 
-bool expressionIsInOrder(int n1, int n2, int n3, char op1, char op2) {
+bool expressionIsInOrder(char op1, char op2) {
     char ops[] = {'+', '-', '*', '/', '%'};
     int precedence[] = {0, 0, 1, 1, 1};
 
@@ -72,7 +72,7 @@ bool expressionIsInOrder(int n1, int n2, int n3, char op1, char op2) {
 
 int evaluateExpression(int n1, int n2, int n3, char op1, char op2) {
     int result;
-    if (expressionIsInOrder(n1, n2, n3, op1, op2)) {
+    if (expressionIsInOrder(op1, op2)) {
         result = perform_op(n1, n2, op1);
         result = perform_op(result, n3, op2);
     } else {
@@ -86,7 +86,7 @@ int evaluateExpression(int n1, int n2, int n3, char op1, char op2) {
 void generateEvaluation(int n1, int n2, int n3, char op1, char op2) {
     int result = evaluateExpression(n1, n2, n3, op1, op2);
 
-    if (expressionIsInOrder(n1, n2, n3, op1, op2)) {
+    if (expressionIsInOrder(op1, op2)) {
         // example: 1 * 2 + 3
         // * comes before +, therefore the expression becomes (1 * 2) + 3
         cout << op1 << " comes before " << op2 << ", therefore the expression becomes ("

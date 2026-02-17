@@ -12,7 +12,7 @@ void askGameSettings(int &num_rounds, int &time_per_round);
 
 void askPlayerSettings(int &num_players, string player_names[], int player_names_size);
 
-bool expressionIsInOrder(int n1, int n2, int n3, char op1, char op2);
+bool expressionIsInOrder(char op1, char op2);
 
 int evaluateExpression(int n1, int n2, int n3, char op1, char op2);
 
