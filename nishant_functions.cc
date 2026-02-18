@@ -13,9 +13,9 @@ void generateExpression(int &x, int &y, int &z, char &a, char &b) {
 	x = rand() % (10);
 	y = rand() % (10);
 	z = rand() % (10);
-	char operands[5] = {'+', '-', '*', '/', '%'};
-	a = operands[rand() % 5];
-	b = operands[rand() % 5];
+	char operands[5] = {'+', '-', '*', '/', '%', '^'};
+	a = operands[rand() % 6];
+	b = operands[rand() % 6];
     if(a=='/'){
         if(y==0)
             y = 1;
@@ -38,4 +38,49 @@ void generateExpression(int &x, int &y, int &z, char &a, char &b) {
     }
 }
 
-#include "nishant_functions.h"
+void displayScoreboard(int scores[], int numPlayers){
+
+    if(numPlayers <= 0){
+        cout << "No players." << endl;
+        return;
+    }
+
+    int maxScore = scores[0];
+
+    for(int i = 0; i < numPlayers; i++){
+        cout << "Player " << i + 1 
+             << ": " << scores[i] << endl;
+
+        if(scores[i] > maxScore){
+            maxScore = scores[i];
+        }
+    }
+
+    int winnerCount = 0;
+    for(int i = 0; i < numPlayers; i++){
+        if(scores[i] == maxScore){
+            winnerCount++;
+        }
+    }
+
+    if(winnerCount == 1){
+        for(int i = 0; i < numPlayers; i++){
+            if(scores[i] == maxScore){
+                cout << "Winner: Player " << i + 1
+                     << " with " << maxScore 
+                     << " points." << endl;
+            }
+        }
+    }
+    else{
+        cout << "Tie between players: ";
+        for(int i = 0; i < numPlayers; i++){
+            if(scores[i] == maxScore){
+                cout << i + 1 << " ";
+            }
+        }
+        cout << "with " << maxScore 
+             << " points." << endl;
+    }
+}
+
