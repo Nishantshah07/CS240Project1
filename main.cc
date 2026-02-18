@@ -90,9 +90,6 @@ int main() {
 
     cout << "\nGame over! The current scores are:" << endl;
     displayScoreboard(player_names, scoreboard, num_players);
-    //
-    // int winner = determineWinner(scoreboard, num_players);
-    // cout << player_names[winner] << ", you win!" << endl;
 
     return 0;
 }
