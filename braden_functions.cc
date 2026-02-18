@@ -5,12 +5,16 @@
 #include "braden_functions.h"
 
 #include <iostream>
-
+#include <cmath>
+//used for array parsing
+#include <algorithm>
+#include <iterator>
+#include <string>
 using std::cout;
 using std::endl;
 using std::cin;
 
-void askGameSettings(int &num_rounds, int &time_per_round) {
+void askGameSettings(int &num_rounds, int &time_per_round) {//game settings
     cout << "First, let's set up the game." << endl;
     num_rounds = 0;
     time_per_round = 0;
@@ -44,7 +48,7 @@ void askPlayerSettings(int &num_players, string player_names[], const int player
     }
 }
 
-int perform_op(int n1, int n2, char op) {
+int perform_op(int n1, int n2, char op) {//performs the given operation on the two numbers
     switch (op) {
         case '+':
             return n1 + n2;
@@ -64,7 +68,7 @@ int perform_op(int n1, int n2, char op) {
     }
 }
 
-bool expressionIsInOrder(char op1, char op2) {
+bool expressionIsInOrder(char op1, char op2) {//returns true if op1 takes precedent over op2
     char ops[] = {'+', '-', '*', '/', '%', '^'};
     int precedence[] = {0, 0, 1, 1, 1, 2};
 
@@ -87,7 +91,7 @@ int evaluateExpression(int n1, int n2, int n3, char op1, char op2) {
     return result;
 }
 
-void explainEvaluation(int n1, int n2, int n3, char op1, char op2) {
+void explainEvaluation(int n1, int n2, int n3, char op1, char op2) {//explains how the expression is evaluated step by step
     int result = evaluateExpression(n1, n2, n3, op1, op2);
 
     if (expressionIsInOrder(op1, op2)) {

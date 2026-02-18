@@ -11,6 +11,7 @@ using std::cout;
 using std::endl;
 using std::cin;
 
+int main() {
 // round settings
 int total_rounds;
 
@@ -22,7 +23,7 @@ int round_start_time;
 // player settings
 int num_players;
 const int max_players = 64;
-string player_names[max_players];
+std::string player_names[max_players];
 int scoreboard[max_players];
 
 // round vars
@@ -35,7 +36,7 @@ int elapsed_time_per_round;
 int elapsed_time_total_round;
 
 
-int main() {
+
     // this program uses random data, so set psuedorandom seed
     srand(time(0));
 
@@ -90,8 +91,8 @@ int main() {
                 " seconds and you currently have " << scoreboard[current_player] << " points." << endl;
     }
 
-    // cout << "Game over! The current scores are:" << endl;
-    // printScoreboard(player_names, scoreboard, num_players);
+    cout << "Game over! The current scores are:" << endl;
+    displayScoreboard(player_names, scoreboard, num_players);
     //
     // int winner = determineWinner(scoreboard, num_players);
     // cout << player_names[winner] << ", you win!" << endl;
