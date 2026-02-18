@@ -3,8 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "nishant_functions.h"
-#include "braden_functions.h"
+#include "helper_functions.h"
 
 
 using std::cout;
@@ -84,11 +83,12 @@ int main() {
 
         // end round
         int elapsed_time_total_round = time(0) - round_start_time;
-        cout << player_names[current_player] << ", it took you " << elapsed_time_total_round <<
-                " seconds and you currently have " << scoreboard[current_player] << " points." << endl;
+        cout << player_names[current_player] << ", it took you " << elapsed_time_total_round << " seconds to solve " <<
+                total_rounds << " expressions and you currently have " << scoreboard[current_player] << " points." <<
+                endl;
     }
 
-    cout << "Game over! The current scores are:" << endl;
+    cout << "\nGame over! The current scores are:" << endl;
     displayScoreboard(player_names, scoreboard, num_players);
     //
     // int winner = determineWinner(scoreboard, num_players);

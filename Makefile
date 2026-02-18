@@ -13,17 +13,14 @@ flags = -Wall -std=c++17
 link = $(compiler) $(flags)
 compile = $(compiler) $(flags) -c
 
-main : main.o nishant_functions.o braden_functions.o
+main : main.o helper_functions.o
 	$(link) $^ -o $@
 	./$@
 
-main.o : main.cc nishant_functions.h braden_functions.h
+main.o : main.cc helper_functions.h
 	$(compile) $<
 
-nishant_functions.o : nishant_functions.cc nishant_functions.h
-	$(compile) $<
-
-braden_functions.o : braden_functions.cc braden_functions.h
+helper_functions.o : helper_functions.cc helper_functions.h
 	$(compile) $<
 
 clean :

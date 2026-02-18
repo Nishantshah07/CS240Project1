@@ -5,7 +5,5 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(CS240Project1
         main.cc
-        nishant_functions.cc
-        nishant_functions.h
-        braden_functions.cc
-        braden_functions.h)
+        helper_functions.cc
+        helper_functions.h)

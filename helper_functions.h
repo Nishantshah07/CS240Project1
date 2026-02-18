@@ -22,5 +22,9 @@ void printExpression(int n1, int n2, int n3, char op1, char op2);
 
 bool checkTime(int current_time, int max_time, int &elapsed_time);
 
+void generateExpression(int &x, int &y, int &z, char &a, char &b);
+
+void displayScoreboard(std::string playerNames[], int scores[], int numPlayers);
+
 
 #endif //BRADEN_FUNCTIONS_H_
