@@ -29,7 +29,7 @@ int scoreboard[max_players];
 // round vars
 int n1, n2, n3;
 char op1, op2;
-int player_answer;
+double player_answer;
 int actual_answer;
 bool completed_round_on_time = false;
 int elapsed_time_per_round;
@@ -68,9 +68,10 @@ int elapsed_time_total_round;
 
             // check answer
             cin >> player_answer;
+
             completed_round_on_time = checkTime(current_time, max_time, elapsed_time_per_round);
             actual_answer = evaluateExpression(n1, n2, n3, op1, op2);
-            if (player_answer == actual_answer) {
+            if (player_answer == static_cast<int>(player_answer) && static_cast<int>(player_answer) == actual_answer) {
                 cout << "That is correct! ";
                 if (completed_round_on_time) {
                     cout << "+1 points." << endl;
