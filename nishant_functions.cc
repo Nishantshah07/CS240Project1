@@ -16,7 +16,7 @@ void generateExpression(int &x, int &y, int &z, char &a, char &b) {//generates a
 	char operands[6] = {'+', '-', '*', '/', '%', '^'};
 	a = operands[rand() % 6];
 	b = operands[rand() % 6];
-    if(a=='/'){
+    if(a=='/' || a=='%'){
         if(y==0)
             y = 1;
         if(y > x && x != 0)
@@ -26,7 +26,7 @@ void generateExpression(int &x, int &y, int &z, char &a, char &b) {//generates a
         y--;
         }
     }
-    if(b=='/'){
+    if(b=='/' || b=='%'){
         if(z==0 && y != 0)
             z = 1;
         if(z > y)
@@ -103,4 +103,3 @@ void displayScoreboard(std::string playerNames[], int scores[], int numPlayers){
              << endl;
     }
 }
-
